@@ -1,0 +1,51 @@
+name: CI/CD for Interactive Algorithm Visualizer
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout your code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      # Step 3: Cache node_modules (optional but recommended)
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # Step 4: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 5: Build the Docker image
+      - name: Build Docker Image
+        run: docker build -t interactive-algorithm-visualizer .
+
+      # Step 6: Run container to check it runs properly
+      - name: Run Docker Container
+        run: docker run -d -p 5174:5174 --name algo-container interactive-algorithm-visualizer
+
+      # Step 7: Check container logs
+      - name: Check Docker Logs
+        run: docker logs algo-container
+
+      # Step 8: (Optional) Stop the container
+      - name: Stop Docker Container
+        run: docker stop algo-container
