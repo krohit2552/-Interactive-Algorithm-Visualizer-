@@ -47,4 +47,5 @@ An interactive visualization tool for understanding sorting algorithms, specific
 
 LIVE DEMO
 GitHub: https://github.com/krohit2552/-Interactive-Algorithm-Visualizer-.git
+LIVE DEMO
 deploy on netlify : bubblesortalgorithmvisualizer.netlify.app
