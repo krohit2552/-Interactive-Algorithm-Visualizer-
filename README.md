@@ -34,7 +34,7 @@ An interactive visualization tool for understanding sorting algorithms, specific
 
 ## Getting Started
 
-1. Clone the repository
+1. Clone the repository: git clone https://github.com/krohit2552/-Interactive-Algorithm-Visualizer-.git
 2. Install dependencies: `npm install`
 3. Start the development server: `npm run dev`
 
@@ -44,3 +44,7 @@ An interactive visualization tool for understanding sorting algorithms, specific
 - TypeScript
 - Tailwind CSS
 - Vite
+
+LIVE DEMO
+GitHub: https://github.com/krohit2552/-Interactive-Algorithm-Visualizer-.git
+deploy on netlify : bubblesortalgorithmvisualizer.netlify.app
